@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     public float speed = 5f;
     public Vector3 vel;
     public bool isPlaying;
+    public ScoreManager scoreManager; 
 
     // Start is called before the first frame update
     void Start()
@@ -68,11 +69,15 @@ public class BallController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (transform.position.x > 0)
+        {
             print("Left Player +1");
-
+            scoreManager.IncrementLeftPlayerScore();
+        }
         if (transform.position.x < 0)
+        {
             print("Right Player +1");
-
+            scoreManager.IncrementRightPlayerScore();
+        }
         ResetBall();
 
     }
